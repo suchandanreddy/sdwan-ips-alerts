@@ -1,4 +1,4 @@
-# SDWAN IPS Alerts
+# SD-WAN Security IPS Alerts
 
 # Objective 
 
