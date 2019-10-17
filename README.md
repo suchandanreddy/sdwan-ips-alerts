@@ -49,3 +49,99 @@ set password=admin
 ```
 
 After setting the env variables, run the python script `sdwan-ips-alerts.py`
+
+## Query used to retrieve IPS alerts
+
+```
+{
+  "query": {
+    "condition": "AND",
+    "rules": [
+      {
+        "value": [
+          "24"
+        ],
+        "field": "entry_time",
+        "type": "date",
+        "operator": "last_n_hours"
+      },
+      {
+        "value": [
+          "ips_alert"
+        ],
+        "field": "type",
+        "type": "string",
+        "operator": "in"
+      }
+    ]
+  },
+  "aggregation": {
+    "field": [
+      {
+        "property": "entry_time",
+        "dataType": "date"
+      },
+      {
+        "property": "device_model",
+        "dataType": "string"
+      },
+      {
+        "property": "vdevice_name",
+        "dataType": "string"
+      },
+      {
+        "property": "host_name",
+        "dataType": "string"
+      },
+      {
+        "property": "vrf",
+        "dataType": "number"
+      },
+      {
+        "property": "message",
+        "dataType": "string"
+      },
+      {
+        "property": "src_ip",
+        "dataType": "string"
+      },
+      {
+        "property": "src_port",
+        "dataType": "number"
+      },
+      {
+        "property": "dst_ip",
+        "dataType": "string"
+      },
+      {
+        "property": "dst_port",
+        "dataType": "number"
+      },
+      {
+        "property": "protocol",
+        "dataType": "number"
+      },
+      {
+        "property": "action",
+        "dataType": "number"
+      },
+      {
+        "property": "sid",
+        "dataType": "number"
+      },
+      {
+        "property": "gid",
+        "dataType": "number"
+      },
+      {
+        "property": "violation_path",
+        "dataType": "string"
+      },
+      {
+        "property": "type",
+        "dataType": "string"
+      }
+    ]
+  }
+}
+```
